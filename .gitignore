@@ -1,0 +1,19 @@
+
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# Testes
+.pytest_cache/
+.coverage
+
+# IDE / SO
+.vscode/
+.idea/
+Thumbs.db

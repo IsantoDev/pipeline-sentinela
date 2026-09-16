@@ -1,0 +1,1 @@
+"""Pacote da Sentinela — lógica de verificação de saúde de serviços."""
