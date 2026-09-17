@@ -3,6 +3,7 @@ from sentinela.verificador import Verificador, Resultado
 from sentinela.banco import criar_banco, salvar
 from sentinela.alertas import alertar
 from sentinela.config import Config
+from sentinela.ia import resumir_incidente
 
 
 
@@ -23,6 +24,7 @@ for url in config.urls:
     resultado = sentinela.checar(str(url))
     salvar(resultado)
     if resultado.situacao !='Rodando':
-        alertar(f"Alerta: Serviço {resultado.url} não se encontra saudável. Situação: {resultado.situacao}")
+        resumo = resumir_incidente(resultado)
+        alertar(resumo)
     print(f'{resultado.situacao:12} | {resultado.url}')
 
