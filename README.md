@@ -10,7 +10,7 @@ lento, os robôs quebram — muitas vezes de madrugada, sem ninguém ver a tempo
 
 ## O que faz
 
-        serviços  →  checa status + latência  →  grava histórico (SQLite)
+    serviços  →  checa status + latência  →  grava histórico (SQLite)
               →  uptime %  →  se cair/estourar SLA
               →  IA resume o incidente  →  alerta no Microsoft Teams
 
@@ -50,7 +50,7 @@ py app.py
 
 # 6. rodar os testes
 pytest
-​```
+```
 
 ### Com Docker
 
