@@ -51,3 +51,15 @@ def listar() -> list:
     linhas = cursor.fetchall()
     conexao.close()
     return linhas
+
+def uptime() -> float:
+    """Calcula a % de checagem de serviços que estão no ar"""
+    conexao = sqlite3.connect(caminho_banco)
+    cursor = conexao.execute(
+        "SELECT COUNT(*),SUM(no_ar) FROM verificacoes"
+    )
+    total, total_no_ar = cursor.fetchone()
+    conexao.close()
+    if total == 0:
+        return 0.0
+    return (total_no_ar / total) * 100
