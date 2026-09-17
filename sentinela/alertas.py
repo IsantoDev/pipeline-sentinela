@@ -12,7 +12,27 @@ def alertar(mensagem: str) -> None:
     if not WEBHOOK_URL:
         print("Webhook URL não configurada. Ignorando alerta.")
         return
+    payload = {
+        "type": "message",
+        "attachments": [
+            {
+                "contentType": "application/vnd.microsoft.card.adaptive",
+                "content": {
+                    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                    "type": "AdaptiveCard",
+                    "version": "1.2",
+                    "body": [
+                        {
+                            "type": "TextBlock",
+                            "text": mensagem,
+                            "wrap": True
+                        }
+                    ]
+                }
+            }
+        ]
+    }
     try:
-        requests.post(WEBHOOK_URL, json={"content": mensagem}, timeout=5)
-    except requests.RequestException as e:
-        print(f"Falha ao enviar alerta: {e}") 
+        requests.post(WEBHOOK_URL, json=payload, timeout=5)
+    except requests.exceptions.RequestException as e:
+        print(f"Erro ao enviar alerta: {e}")
